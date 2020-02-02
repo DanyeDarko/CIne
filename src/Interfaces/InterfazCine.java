@@ -1,6 +1,5 @@
 package Interfaces;
 
-
 public interface InterfazCine {
 
     public void obtenerDatosTaquilla(int numeroTaquilla);
