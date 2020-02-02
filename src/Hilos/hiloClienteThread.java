@@ -2,27 +2,30 @@ package Hilos;
 
 import Objetos.Cine;
 
-public class hiloCliente extends Thread {
+public class hiloClienteThread extends Thread {
 
+    //<editor-fold defaultstate="collapsed" desc="VARIABLES GLOBALES DEL HILO">
     int cliente, numeroTaquilla, cantBoletos, numSala, tipoPeracion;
     Cine Cine;
-    
-    public hiloCliente(Cine c,int cliente, int numeroTaquilla, int cantBoletos, int numSala, int tipoOperacion) {
-        this.Cine = c;
-        this.cliente = cliente;
+    //</editor-fold>
+
+    public hiloClienteThread(Cine c, int numeroTaquilla, int cliente, int cantBoletos, int numSala, int tipoOperacion) {
+        this.Cine = c; // ESTANCIA DE LA CLASE MONITORA 
         this.numeroTaquilla = numeroTaquilla;
+        this.cliente = cliente;
         this.cantBoletos = cantBoletos;
         this.numSala = numSala;
         this.tipoPeracion = tipoOperacion;
 
     }
-    public hiloCliente(Cine c,int[] registro){
-        
+
+    public hiloClienteThread(Cine c, int[] registro) {
+
     }
 
     public void run() {
-    //Cine.operacionTaquilla(cliente, numeroTaquilla, cantBoletos,numSala,tipoPeracion);
-    Cine.LlenarTaquillas();
+        //Cine.operacionTaquilla(cliente, numeroTaquilla, cantBoletos,numSala,tipoPeracion);
+        Cine.LlenarTaquillas();
     }
 
 }
