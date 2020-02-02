@@ -126,32 +126,30 @@ public abstract class DatosCineAbstracta implements InterfazCine {
         getListaDeTaquillas().get(numTaquilla).get(3).add(tipoOperacion);
     }
 
-    public void LlenarTaquillas() {
-        for (int numTaquilla = 0; numTaquilla < 4; numTaquilla++) {
+    public void LlenarTaquillas(int numeroTaquillaLlenar) {
             for (int fila = 0; fila < 8; fila++) {
                 for (int columna = 0; columna < 4; columna++) {
-                    switch (numTaquilla) {
+                    switch (numeroTaquillaLlenar) {
                         case 0: // METODO add PARA AGREGAR CADA ELEMENTO DE LA MATRIZ[][] EN LA MISMA POCICION QUE EL ARRAYLIST BIDIMENSIONAL
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla1()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla1()[fila][columna]);
                             /*TRANSPONE UNA MATRIZ COMUN [8][4] CON EL ARRAYLIST BIDIMENSIONAL DE TIPO INTEGER
                              VARIANTES: SEGUN EL CASO LA VARIANTE DEL METODO 'get' ES EL NUMERO DE MATRIZ[][] TRANSPUESTA*/
                             break;
                         case 1:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla2()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla2()[fila][columna]);
                             break;
                         case 2:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla3()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla3()[fila][columna]);
                             break;
 
                         case 3:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla4()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla4()[fila][columna]);
                             break;
 
                     }
 
                 }
             }
-        }
     }
 
 //</editor-fold>

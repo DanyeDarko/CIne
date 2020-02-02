@@ -25,7 +25,9 @@ public class hiloClienteThread extends Thread {
 
     public void run() {
         //Cine.operacionTaquilla(cliente, numeroTaquilla, cantBoletos,numSala,tipoPeracion);
-        Cine.LlenarTaquillas();
+        System.out.println("HILO"+cliente+"LLENANDO MATRIZ"+numeroTaquilla);
+        Cine.LlenarTaquillas(numeroTaquilla);
+       
     }
 
 }

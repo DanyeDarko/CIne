@@ -6,5 +6,5 @@ public interface InterfazCine {
 
     public void operacionTaquilla(int numeroCliente, int numTaquilla, int cantidadBoletos, int numeroSala, int tipoOperacion);
 
-    public void LlenarTaquillas();
+    public void LlenarTaquillas(int numeroTaquillaAllenar);
 }

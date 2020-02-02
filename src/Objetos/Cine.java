@@ -35,7 +35,7 @@ public class Cine extends DatosCineAbstracta {
         }
         //</editor-fold>
 
-        LlenarTaquillas(); // INICIALISAMOS LAS TAQUILLAS CON LOS DATOS PROPUESTOS EN EL EJERCICIO EN CLASE 
+//        LlenarTaquillas(); // INICIALISAMOS LAS TAQUILLAS CON LOS DATOS PROPUESTOS EN EL EJERCICIO EN CLASE 
         //</editor-fold>
 
     }
