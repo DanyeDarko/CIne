@@ -7,18 +7,16 @@ import java.util.List;
 import Interfaces.InterfazCine;
 // </editor-fold>
 
-
 public abstract class DatosCineAbstracta implements InterfazCine {
 // CLASE ABSTRACTA NO SE PUEDE INSTANCIAR SOLO HEREDAR ATRIBUTOS Y METODOS LOS CUALES IMPLEMENTA DE LA INTERFAZ 'interfazCine'
 // <editor-fold defaultstate="collapsed" desc="VARIABLES UTILES DE CLASE ABSTRACTA QUE SE HEREDAN A OBJETOS  QUE EXTIENDA DE 'DatosCineAbstracta' ">
-    protected ArrayList< List< List<Integer>>> listaTaquillas = new ArrayList< List< List< Integer>>>();
 
-    /* LISTA QUE ALMACENARA EN CADA POCICION[] UNA MATRIZ BIDIMENSIONAL CON 4 PRINCIPALES 
-   COLUMNAS Y FILAS INDETERMINADAS */ 
-                      
-//<editor-fold defaultstate="collapsed" desc="EXPLICACION DE LISTA (ARRAYLIST) DE TIPO ARREGLO BIDIMENSIONAL">
+    protected ArrayList< List< List<Integer>>> listaTaquillas = new ArrayList< List< List< Integer>>>();
+   /* LISTA QUE ALMACENARA EN CADA POCICION[] UNA MATRIZ BIDIMENSIONAL CON 4 PRINCIPALES 
+   COLUMNAS Y FILAS INDETERMINADAS */
     
-/*ARRAY DE ARRAYS EN LA POCICION [0] DE 'Taquillas' :
+//<editor-fold defaultstate="collapsed" desc="EXPLICACION DE LISTA (ARRAYLIST) DE TIPO ARREGLO BIDIMENSIONAL">
+    /*ARRAY DE ARRAYS EN LA POCICION [0] DE 'Taquillas' :
                  
                   **LIST<INTEGER> 0**          **LIST<INTEGER> 1**        **LIST<INTEGER> 2**        **LIST<INTEGER> 3**
                      NUMERO HILO                   BOLETOS                   SALA DE BOLETO                   Status
@@ -46,13 +44,10 @@ public abstract class DatosCineAbstracta implements InterfazCine {
       8(DE 0 A 7) FILAS POR LAS 8 INSERCCIONES QUE SE REALIZARAN MEDIANTE UN HILO ,UN HILO PARA CADA INSERCION
       EL HILO INSERTA SU NUMERO DE CLIENTE (EJEMPLO 1) LOS BOLETOS A COMPRAR (EJEMPLO: 5 ) Y DE LA SALA A COMPRAR[5 SALAS DISPONIBLES]
      */
-    
     //<editor-fold defaultstate="collapsed" desc="<ARREGLOS BIDIMENSIONALES CON VALORES CONSTANTES PROPUESTOS EN CLASE">
-    
     // CADA TAQUILLA LLEVA EL CONTROL DE LOS BOLETOS QUE VENDE(ACCION 1) O DEVUELVEN(ACCION 0) IDENTIFICADOS CON NUMERO DE CLIENTE O TICKET(HILO), 
     // CANTIDAD DE BOLETOS Y OPERACION REALISADA( 0 |  1)
-    
-    protected Integer[][] Taquilla1 = {                            
+    protected Integer[][] Taquilla1 = {
         //  HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
         {1, 5, 5, 1}, // <--- FILA 0
         {2, 4, 4, 1},
@@ -63,7 +58,7 @@ public abstract class DatosCineAbstracta implements InterfazCine {
         {7, 3, 3, 0},
         {8, 5, 1, 1}
     };
-    
+
     protected int[][] Taquilla2 = {
         //  HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
         {9, 10, 5, 1},
@@ -89,7 +84,7 @@ public abstract class DatosCineAbstracta implements InterfazCine {
     };
 
     protected int[][] Taquilla4 = {
-    // HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
+        // HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
         {25, 5, 5, 1},
         {26, 4, 4, 1},
         {27, 3, 3, 1},
@@ -99,10 +94,9 @@ public abstract class DatosCineAbstracta implements InterfazCine {
         {31, 3, 3, 0},
         {32, 5, 1, 0}
     };
-      //</editor-fold>
-    
+    //</editor-fold>
+
     // </editor-fold>
-    
 //<editor-fold defaultstate="collapsed" desc="METODOS ABSTRACTOS DE LA CLASE">
     @Override
     public void obtenerDatosTaquilla(int numeroTaquilla) { // RECIBE COMO PARAMETRO NUMERO DE TAQUILLA A IMPRIMIR
@@ -132,38 +126,34 @@ public abstract class DatosCineAbstracta implements InterfazCine {
         getListaDeTaquillas().get(numTaquilla).get(3).add(tipoOperacion);
     }
 
-    public void LlenarTaquillas() {
-        for (int numTaquilla = 0; numTaquilla < 4; numTaquilla++) {
+    public void LlenarTaquillas(int numeroTaquillaLlenar) {
             for (int fila = 0; fila < 8; fila++) {
                 for (int columna = 0; columna < 4; columna++) {
-                    switch (numTaquilla) {
+                    switch (numeroTaquillaLlenar) {
                         case 0: // METODO add PARA AGREGAR CADA ELEMENTO DE LA MATRIZ[][] EN LA MISMA POCICION QUE EL ARRAYLIST BIDIMENSIONAL
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla1()[fila][columna]); 
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla1()[fila][columna]);
                             /*TRANSPONE UNA MATRIZ COMUN [8][4] CON EL ARRAYLIST BIDIMENSIONAL DE TIPO INTEGER
                              VARIANTES: SEGUN EL CASO LA VARIANTE DEL METODO 'get' ES EL NUMERO DE MATRIZ[][] TRANSPUESTA*/
                             break;
                         case 1:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla2()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla2()[fila][columna]);
                             break;
                         case 2:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla3()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla3()[fila][columna]);
                             break;
 
                         case 3:
-                            getListaDeTaquillas().get(numTaquilla).get(columna).add(getTaquilla4()[fila][columna]);
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla4()[fila][columna]);
                             break;
 
                     }
 
                 }
             }
-        }
     }
 
 //</editor-fold>
-
 //<editor-fold defaultstate="collapsed" desc="METODOS DE ENCAPSULAMIENTO">
-    
     /**
      * @return the Taquillas
      */
