@@ -7,14 +7,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 //</editor-fold>
 
-public class servicioCine {
+public class mainServicioCine {
 
     public static void main(String[] args) {
 
         //<editor-fold defaultstate="collapsed" desc="VARIABLES DE PROGAMA">
         short cantidadTaquillas = 4;
-        short cantidadHilos = 1;
-        short iterador;
+        short cantidadHilos = 4;
+        int iterador;
 
         /*NUEVA ESTANCIA DE LA CLASE 'Cine'(MONITORA),RECIBE COMO PARAMETRO LAS DIMENSIONES
            O TAQUILLAS DISPONIBLES PARA EL CINE EN ESTE CASO 4 <--- VER CONSTRUCCION EN CLASE 'Cine'*/
@@ -34,13 +34,13 @@ public class servicioCine {
         //<editor-fold defaultstate="collapsed" desc="CREACION DE HILOS THREAD">
         //CODIGO DE UTILIDAD PARA LEVANTAR LOS HILOS   
         for (iterador = 0; iterador < cantidadHilos; iterador++) { // GENERACION DE N REGISTROS DE COMPRA
-            hiloClienteThread nuevoCliente = new hiloClienteThread(Cine1, iterador, 0, iterador, iterador, iterador);
+            hiloClienteThread nuevoCliente = new hiloClienteThread(Cine1, iterador, iterador, 1, 1, 1);
 
             //<editor-fold defaultstate="collapsed" desc="EXPLICACION PARAMETROS  QUE RECIBE EL HILO">            
-            /*   MONITOR  CLIENTE  TAQUILLA  BOLETOS   SALA  TIPO OPERACION
-                   Cine1      0    RANDOM(1-4)   0        0         0   <------- PRIMERA ITERACION iteracion = 0
-                   Cine1      1    RANDOM(1-4)   1        1         1   <------- SEGUNDA ITERACION iteracion = 1
-                   Cine1      n    RANDOM(1-4)   n        n         n 
+            /*   MONITOR   CLIENTE      TAQUILLA    BOLETOS         SALA  TIPO OPERACION
+                   Cine1      0            0      RANDOM(1-15)        0         0   <------- PRIMERA ITERACION iteracion = 0
+                   Cine1      1            1      RANDOM(1-15)                  1   <------- SEGUNDA ITERACION iteracion = 1
+                   Cine1  iterador(n) iterador(n) RANDOM(1-15)        n         n 
 
              */
             //</editor-fold>
