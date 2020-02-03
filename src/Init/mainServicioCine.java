@@ -64,7 +64,7 @@ public class mainServicioCine {
             // DE ARREGLOS BIDIMENSIONALES);  
             System.out.println("");
         }
-
+ 
         //</editor-fold>
     }
 
