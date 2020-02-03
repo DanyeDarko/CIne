@@ -5,6 +5,15 @@ package Objetos;/*<---------- CLASE ABSTRACTA PERTENECIENTE AL PAQUETE DE OBJETO
 import java.util.ArrayList;  // CLASE ARRAYLIST PARA INSTANCIAR OBJETO DE TIPO LISTA DE ARREGLOS  
 import java.util.List;
 import Interfaces.InterfazCine;
+
+//<editor-fold defaultstate="collapsed" desc="LIBRERIAS PARA LECTURA DE ARCHIVO PLANO">
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+// </editor-fold>
+
 // </editor-fold>
 
 public abstract class DatosCineAbstracta implements InterfazCine {
@@ -47,53 +56,12 @@ public abstract class DatosCineAbstracta implements InterfazCine {
     //<editor-fold defaultstate="collapsed" desc="<ARREGLOS BIDIMENSIONALES CON VALORES CONSTANTES PROPUESTOS EN CLASE">
     // CADA TAQUILLA LLEVA EL CONTROL DE LOS BOLETOS QUE VENDE(ACCION 1) O DEVUELVEN(ACCION 0) IDENTIFICADOS CON NUMERO DE CLIENTE O TICKET(HILO), 
     // CANTIDAD DE BOLETOS Y OPERACION REALISADA( 0 |  1)
-    protected Integer[][] Taquilla1 = {
-        //  HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
-        {1, 5, 5, 1}, // <--- FILA 0
-        {2, 4, 4, 1},
-        {3, 3, 3, 1},
-        {4, 2, 2, 1},
-        {5, 1, 1, 1},
-        {6, 6, 5, 0},
-        {7, 3, 3, 0},
-        {8, 5, 1, 1}
-    };
-
-    protected int[][] Taquilla2 = {
-        //  HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
-        {9, 10, 5, 1},
-        {10, 10, 4, 0},
-        {11, 7, 2, 1},
-        {12, 1, 1, 0},
-        {13, 5, 5, 0},
-        {14, 3, 2, 1},
-        {15, 7, 4, 0},
-        {16, 5, 5, 1}
-    };
-
-    protected int[][] Taquilla3 = {
-        // HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
-        {17, 7, 2, 1},
-        {18, 4, 5, 1},
-        {19, 1, 3, 1},
-        {20, 1, 1, 0},
-        {21, 7, 5, 1},
-        {22, 8, 1, 0},
-        {23, 6, 3, 1},
-        {24, 2, 4, 0}
-    };
-
-    protected int[][] Taquilla4 = {
-        // HILO  BOLETOS    SALA   ACCION(C0MPRAR O VENDER)
-        {25, 5, 5, 1},
-        {26, 4, 4, 1},
-        {27, 3, 3, 1},
-        {28, 2, 2, 1},
-        {29, 1, 1, 1},
-        {30, 6, 5, 0},
-        {31, 3, 3, 0},
-        {32, 5, 1, 0}
-    };
+    protected Integer[][] Taquilla1;
+    protected Integer[][] Taquilla2; 
+    protected Integer[][] Taquilla3;
+    protected Integer[][] Taquilla4;
+    
+    Integer [][] matrizAUX;
     //</editor-fold>
 
     // </editor-fold>
@@ -152,6 +120,69 @@ public abstract class DatosCineAbstracta implements InterfazCine {
             }
     }
 
+    public Integer[][] leerMatrizTxt(String URLMatrizDatos){
+        File archivo = null;
+FileReader fr = null;
+BufferedReader br = null;
+FileWriter resultado = null;
+PrintWriter pw = null;
+
+// utilizamos un Try, Catch, Finally, para intentar abrir el archivo de texto de las matrices
+try {
+//instanciamos la variable con el archivo que contiene las matrices A y B
+archivo = new File (URLMatrizDatos);
+// instanciamos el filereader con el archivo de txt
+fr = new FileReader (archivo);
+//instanciamos el bufferedreader
+br = new BufferedReader(fr);
+//la variable linea guarda temporalmente la linea del fichero
+String linea;
+// guardará las dimensiones de las matrices
+Integer filas=0, columnas=0;
+//Arreglo que contendrá las partes en las que separemos las lineas
+String[] partes;
+//Matrices Auxiliar
+
+
+if((linea=br.readLine())!=null){
+    partes = linea.split(" ");
+    // obtiene las dimensaiones de la matriz ya que esta en la linea 0 del fichero
+    filas = Integer.valueOf(partes[0]);
+    columnas = Integer.valueOf(partes[1]);
+}
+
+matrizAUX = new Integer[filas][columnas];
+// obtenemos los valores de la matriz A
+for(int i = 0; i < filas; i++){
+    linea=br.readLine();
+    // separamos los espacios
+    partes = linea.split(" ");
+    // sub-for, para obtener las columnas, en caso que la matriz no sea cuadrada.
+    for(int j = 0; j < columnas; j++)
+    matrizAUX[i][j] = Integer.valueOf(partes[j]);
+    } 
+          
+return matrizAUX;
+}
+    catch(Exception e){
+    System.out.println("PUTM UNA EXEPCION"+e);
+    }finally{
+        // En el finally cerramos el fichero, para asegurarnos
+        // que se cierra tanto si todo va bien como si salta
+        // una excepcion.
+        try{
+        if( null != fr ){
+        fr.close();
+        }
+    }catch (Exception e2){
+        e2.printStackTrace();
+        }
+            
+}
+ return matrizAUX;
+    }
+
+
 //</editor-fold>
 //<editor-fold defaultstate="collapsed" desc="METODOS DE ENCAPSULAMIENTO">
     /**
@@ -185,42 +216,42 @@ public abstract class DatosCineAbstracta implements InterfazCine {
     /**
      * @return the Taquilla2
      */
-    public int[][] getTaquilla2() {
+    public Integer[][] getTaquilla2() {
         return Taquilla2;
     }
 
     /**
      * @param Taquilla2 the Taquilla2 to set
      */
-    public void setTaquilla2(int[][] Taquilla2) {
+    public void setTaquilla2(Integer[][] Taquilla2) {
         this.Taquilla2 = Taquilla2;
     }
 
     /**
      * @return the Taquilla3
      */
-    public int[][] getTaquilla3() {
+    public Integer[][] getTaquilla3() {
         return Taquilla3;
     }
 
     /**
      * @param Taquilla3 the Taquilla3 to set
      */
-    public void setTaquilla3(int[][] Taquilla3) {
+    public void setTaquilla3(Integer[][] Taquilla3) {
         this.Taquilla3 = Taquilla3;
     }
 
     /**
      * @return the Taquilla4
      */
-    public int[][] getTaquilla4() {
+    public Integer[][] getTaquilla4() {
         return Taquilla4;
     }
 
     /**
      * @param Taquilla4 the Taquilla4 to set
      */
-    public void setTaquilla4(int[][] Taquilla4) {
+    public void setTaquilla4(Integer[][] Taquilla4) {
         this.Taquilla4 = Taquilla4;
     }
     //</editor-fold>
