@@ -17,7 +17,7 @@ public class Cine extends DatosCineAbstracta {
         for (int dimension = 0; dimension < cantidadTaquillas; dimension++) {
             // ITERADOR QUE PERMITE LA CREACION DE N CANTIDAD ESTIPULADA DE DIMENSIONES O TAQUILLAS
 
-            listaTaquillas.add(new ArrayList<List<Integer>>());
+            this.listaTaquillas.add(new ArrayList<List<Integer>>());
             // POR CADA ITERACION AGREGA UN ARREGLO BIDIMENSIONAL A LA LISTA DE AREGLOS
             // CADA ARREGLO BIDIMENSIONAL CONTENDRA DATOS DE VENTAS Y DEVOLUCIONES 
             // ACERCA DE UNA ESPECIFICA TAQUILLA,ES DECIR LA DIMENSION EN LA QUE SE ENCUENTRA DICHO ARREGLO
@@ -28,13 +28,17 @@ public class Cine extends DatosCineAbstracta {
                 // ITERADOR QUE PERMITE AGREGAR 4 COLUMNAS A CADA ARREGLO BIDIMENSIONAL
                 // ES DECIR AGREGA UNA LISTA NUEVA POR CADA ITERACION EN CADA UNA DE LAS 4 DIMENSIONES
 
-                listaTaquillas.get(dimension).add(new ArrayList<Integer>());
+                this.listaTaquillas.get(dimension).add(new ArrayList<Integer>());
                 //SE UTILIZA 'get'(indice) EQUIVALENTE A [indice] EN ARREGLOS COMUNES
                 //'add' SE UTILISA PARA AGREGAR ELEMENTOS AL INDICE INDICADO
             }
         }
         //</editor-fold>
 
+        this.Taquilla1 = leerMatrizTxt("/home/ye/NetBeansProjects/HilosCIne/src/Objetos/Taquilla1_Datos.txt"); 
+        this.Taquilla2 = leerMatrizTxt("/home/ye/NetBeansProjects/HilosCIne/src/Objetos/Taquilla2_Datos.txt"); 
+        this.Taquilla3 = leerMatrizTxt("/home/ye/NetBeansProjects/HilosCIne/src/Objetos/Taquilla3_Datos.txt");
+        this.Taquilla4 = leerMatrizTxt("/home/ye/NetBeansProjects/HilosCIne/src/Objetos/Taquilla4_Datos.txt");
 //        LlenarTaquillas(); // INICIALISAMOS LAS TAQUILLAS CON LOS DATOS PROPUESTOS EN EL EJERCICIO EN CLASE 
         //</editor-fold>
 
