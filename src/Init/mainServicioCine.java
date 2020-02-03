@@ -3,8 +3,6 @@ package Init;
 //<editor-fold defaultstate="collapsed" desc="IMPORTACIONES Y LIBRERIAS">
 import Objetos.Cine;
 import Hilos.hiloClienteThread;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 //</editor-fold>
 
 public class mainServicioCine {
@@ -64,7 +62,7 @@ public class mainServicioCine {
             // DE ARREGLOS BIDIMENSIONALES);  
             System.out.println("");
         }
-
+ 
         //</editor-fold>
     }
 
