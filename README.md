@@ -140,6 +140,60 @@ for (int fila = 0; fila < 8; fila++) {
 con el Case nos es posible Durante la Iteracion del Arreglo Saber en que 'Dimension' vamos a colocar los valores del Arreglo *'Bidimensional[][]'*
 
 
+### MAIN SERVICIO DE CINE 
+Esta es la clase principal ,Existen las siguientes variables comunes utilisadas para fines de definicion e iteracion de arreglos
+```java
+         // DEFINE CANTIDAD DE TAQUILLAS EN EL ARRAYLIST PRINCIPAL 
+        short cantidadTaquillas = 4;
+        // DEFINE CUANTOS HILOS VAN A SER GENERADOS DURANTE LA EJECUCION DE ESTA CLASE
+        short cantidadHilos = 4;
+        // ITERADOR PARA RECORRER EL ARREGLO DE HILOS CREADO MAS ADELANTE
+        int iterador;
+```
+Variables con un nivel mas alto de complejidad,Permiten Almacenar los hilos y por supuesto monitorearlos con una sola clase compartiendo recursos 
+```java
+    /*NUEVA ESTANCIA DE LA CLASE 'Cine'(MONITORA),RECIBE COMO PARAMETRO LAS DIMENSIONES
+           O TAQUILLAS DISPONIBLES PARA EL CINE EN ESTE CASO 4 <--- VER CONSTRUCCION EN CLASE 'Cine'*/
+        Cine Cine1 = new Cine(cantidadTaquillas);
+
+        /*NUEVA ESTANCIA DE ARREGLO DE TIPO CLASE 'hiloCliente',COMO PARAMETRO 
+          LA CANTIDAD DE HILOS QUE SE DESEAN EJECUTAR */
+        hiloClienteThread[] Htread = new hiloClienteThread[cantidadHilos];
+```
+#### NOTA: Durante la creacion de los Hilos es importante brindar un numero de Taquilla ,El cual dictamina que Taquilla es la que llenara el hilo durante la  ejecicion del metodo 'LlenarMatriz(numMatriz)' en el metodo Run() del hilo
+
+La asignacion de numero de hilo se da por un ciclo for en la clase principal representado de la siguiente forma :
+
+```java
+   for (iterador = 0; iterador < cantidadHilos; iterador++) { // GENERACION DE N REGISTROS DE COMPRA
+            hiloClienteThread nuevoCliente = new hiloClienteThread(Cine1, iterador, iterador, 1, 1, 1);
+
+            //<editor-fold defaultstate="collapsed" desc="EXPLICACION PARAMETROS  QUE RECIBE EL HILO">            
+            /*   MONITOR   CLIENTE      TAQUILLA    BOLETOS         SALA  TIPO OPERACION
+                   Cine1      0            0      RANDOM(1-15)        0         0   <------- PRIMERA ITERACION iteracion = 0
+                   Cine1      1            1      RANDOM(1-15)                  1   <------- SEGUNDA ITERACION iteracion = 1
+                   Cine1  iterador(n) iterador(n) RANDOM(1-15)        n         n 
+
+             */
+            //</editor-fold>
+            Htread[iterador] = nuevoCliente; // AGREGA UN NUEVO HILO AL ARREGLO DE HILOS
+            Htread[iterador].run(); // DESPLIEGE DE HILOS
+   ```
+donde el iterador pasa como valor de *'numTaquilla'* que es el segundo parametro que recibe el hilo .
+
+Es Importante recalcar que al final de OPerar sobre 4 distintos HIlos es necesario Dictaminar que un Proceso termine para iniciar el segundo,es por eso la importancia de hacer **Join()** en el trabajo de los hilos 
+ ```java
+try {
+
+                for (int j = 0; j < cantidadHilos; j++) {
+                    Htread[iterador].join();
+                }
+            } catch (InterruptedException ex) {
+                System.out.println("OCURRIO UN ERROR EN LA SINCRONISACION DE HILOS");
+            }
+        }
+ ```
+ 
 Mira Deployment para conocer como desplegar el proyecto desde Netbeans o Visual Studio Code.
 ## Pre-requisitos 📋
 
