@@ -197,9 +197,9 @@ try {
 Mira Deployment para conocer como desplegar el proyecto desde Netbeans o Visual Studio Code.
 ## Pre-requisitos 📋
 
-- JAVA SDK](#)
-- NETBEANS ,VISUAL STUDIO CODE O IDE JAVA (#)
-- GIT(#)
+- [JAVA SDK](#https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+- [NETBEANS ,VISUAL STUDIO CODE O IDE JAVA] (#)
+- [GIT](# [Search domain git-scm.com/downloads] https://git-scm.com/downloads)
 
 
 
