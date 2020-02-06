@@ -13,9 +13,11 @@ Para Descargar y desplegar el proyecto Es necesario contar Con git ,una terminal
 ![ARQUITECTURA DEL ARRAYLIST PRINCIPAL O RECURSO DE LO SHULOS](https://raw.githubusercontent.com/DanyeDarko/Cine/master/ARREGLO.png)
 
 en donde la definicion del arreglo es :
-``java
+
+```java
 ArrayList< List< List<Integer>>> listaTaquillas = new ArrayList< List< List< Integer>>>(); 
-``
+```
+
 Declarando asi ,Un Arreglo de 3 dimensiones donde Cada una de estas dimensiones,Representara Una **Taquilla**,Que a su ves contendran Datos almacenados en un Array de 4 columnas **Numero cliente(numero de hilo),Cant Boletos,Sala,Compra(1) o Devolucion(0)**.
 
 ### NOTA : el largo de las filas no es predeterminado ,Puesto que es un arreglo dinamico con el que se manejan los Datos
@@ -23,7 +25,7 @@ Declarando asi ,Un Arreglo de 3 dimensiones donde Cada una de estas dimensiones,
 Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la siguiente: 
 
 | Num Cliente | Cant Boletos | | Sala | AccionTaquilla|
-| ----- | ---- |
+| ----- | ---- | ----- | ---- |
 | 1 | 5 | 2 | 1 |
 
  Estas Variables seran definida por la variables que pasan al metodo **operacionTaquilla** de la clase **'DatosCineAbstracta'** el cual implementa con *Implements* los metodos de la interfaz **'InterfazCine'**  <-- ESTAS VARIABLE SE CONSTRUYE DESDE EL EL CONSTRUCTOR DEL HILO EL PARAMETRO SE DEFINNE EN **'mainServicioCine'** o clase principal.
@@ -32,16 +34,16 @@ Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la sigu
  Construye de manera abstracta los metodos usados principalmente en un cine, son implementados en la **'DatosCineAbstracta'**
  
  - *ObtenerDatosTaquilla *: Recibe como parametro la taquilla que queremos imprimir en este caso (Dimension de el arreglo principal de donde obtendremos los datos) 
- 
- ``java
+ ```
+ java
      public void obtenerDatosTaquilla(int numeroTaquilla);
-``
+```
 - *operacionTaquilla* : Realisa una nueva compra(nueva insercion)de acuerdo a la Taquilla donde se desea comprar,Normalmente esta accion la realisa un cliente(Hilo Representa al cliente) que planea devolver(0) o comprar(1) **N** cantidad de boletos para **X** sala 
- ``java
+ ```java
     public void operacionTaquilla(int numeroCliente, int numTaquilla, int cantidadBoletos, int numeroSala, int tipoOperacion);
-``
+```
 - *llenarTaquillas*: Las taquillas simplemente transponen los datos de un *'Arreglo Bidimensional'* definido en la clase **'DatosCineAbstract'**  
- ``java
+ ```java
     public void LlenarTaquillas(int numeroTaquillaAllenar);
     
     // DEFINICION DE MATRICES BIDIMENSIONALES EN CLASE 'DatosCineAbstract'     
@@ -49,15 +51,15 @@ Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la sigu
     protected Integer[][] Taquilla2; 
     protected Integer[][] Taquilla3;
     protected Integer[][] Taquilla4;
- ``
+ ```
  las cuales se Inicialisan en la Clase **'Cine'** objeto que herededa de **'DatosCineAbstracta'** todos sus atributos y metodos ,solo inicialisa valores en esta clase , la inicialisacion de los arreglos se basan en la lectura de un archivo plano 
  Gracias Al metodo 'leerMatrizTxt'
  
  - *leerMatrizTxt* : Permite la lectura de un archivo plano ,Donde se encuentran los datos preescritos de cada *Taquilla* ,Los datos los inserta en una matriz de tipo 'Integer' que es Devuelta para trasnponer *'List < List <Integer>>'* con los datos de el arreglo  *'Integer [][]'* con cada uno de sus elementos
     
-``java
+```java
     public Integer[][] leerMatrizTxt(String URLArcqyuhivo);
- ``
+ ```
 
 
 Mira Deployment para conocer como desplegar el proyecto desde Netbeans o Visual Studio Code.
@@ -88,6 +90,6 @@ Por favor lee el CONTRIBUTING.md para detalles de nuestro código de conducta, y
 Wiki book
 
 ## LICENCIA 📄
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo LICENSE.md para detalles
+Este proyecto está bajo una licencia libre ,sientete libre de hacer fork de el codigo o modificarlo . :))
 
     
