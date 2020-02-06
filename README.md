@@ -24,7 +24,7 @@ Declarando asi ,Un Arreglo de 3 dimensiones donde Cada una de estas dimensiones,
 
 Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la siguiente: 
 
-| Num Cliente | Cant Boletos | | Sala | AccionTaquilla|
+| Num Cliente | Cant Boletos | Sala | AccionTaquilla|
 | ----- | ---- | ----- | ---- |
 | 1 | 5 | 2 | 1 |
 
