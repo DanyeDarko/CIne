@@ -10,6 +10,8 @@ Para Descargar y desplegar el proyecto Es necesario contar Con git ,una terminal
  La clase 'DatosCineAbstracta' contiene todas las variables utiles y metodos implementados de la interfaz 'interfazCine'
  El ArrayList de tipo ArrayList Bidimensional tiene la siguiente arquitectura: 
 
+![ARQUITECTURA DEL ARRAYLIST PRINCIPAL O RECURSO DE LO SHULOS](https://raw.githubusercontent.com/DanyeDarko/Cine/master/ARREGLO.png)
+
 Mira Deployment para conocer como desplegar el proyecto desde Netbeans o Visual Studio Code.
 ## Pre-requisitos 📋
 
