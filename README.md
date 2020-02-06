@@ -92,6 +92,52 @@ Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la sigu
 ```java
     public Integer[][] leerMatrizTxt(String URLArcqyuhivo);
  ```
+### HILO THREAD CLIENTE 
+Hilo que al desplegarse realizara una compra(tipoOPeracion = 1) o devolucion(tipoOperacion = 0) de **N** *boletos* para **X** *sala* en una *Taquilla* especifica
+cada hilo recibe como parametro una Instancia de el objeto **'Cine'** para compartir los recursos que tiene con los otros hilos que se ejecutan bajo una misma instancia.
+
+```java
+   public hiloClienteThread(Cine c, int numeroTaquilla, int cliente, int cantBoletos, int numSala, int tipoOperacion) {
+        this.Cine = c; // ESTANCIA DE LA CLASE MONITORA 
+        this.numeroTaquilla = numeroTaquilla;
+        this.cliente = cliente;
+        this.cantBoletos = cantBoletos;
+        this.numSala = numSala;
+        this.tipoPeracion = tipoOperacion;
+
+    }
+ ```
+En el metodo **Run()** del Hilo Ejecutamos el metodo de el monitor **'Cine'** para llenar la Matriz Correspondiente al umero de hilo ,Es decir ;
+
+**SI EL HILO RECIBE COMO PARAMETRO 1**En numeroTaquilla' este parametro pasa con el  el mismo valor al metodo **LlenarTaquillas** que como ya vimos recibe como parametro el numero de Taquilla a Llenar con el codigo Siguiente :
+
+```java
+for (int fila = 0; fila < 8; fila++) {
+                for (int columna = 0; columna < 4; columna++) {
+                    switch (numeroTaquillaLlenar) {
+                        case 0: // METODO add PARA AGREGAR CADA ELEMENTO DE LA MATRIZ[][] EN LA MISMA POCICION QUE EL ARRAYLIST BIDIMENSIONAL
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla1()[fila][columna]);
+                            /*TRANSPONE UNA MATRIZ COMUN [8][4] CON EL ARRAYLIST BIDIMENSIONAL DE TIPO INTEGER
+                             VARIANTES: SEGUN EL CASO LA VARIANTE DEL METODO 'get' ES EL NUMERO DE MATRIZ[][] TRANSPUESTA*/
+                            break;
+                        case 1:
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla2()[fila][columna]);
+                            break;
+                        case 2:
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla3()[fila][columna]);
+                            break;
+
+                        case 3:
+                            getListaDeTaquillas().get(numeroTaquillaLlenar).get(columna).add(getTaquilla4()[fila][columna]);
+                            break;
+
+                    }
+
+                }
+            }
+```
+
+con el Case nos es posible Durante la Iteracion del Arreglo Saber en que 'Dimension' vamos a colocar los valores del Arreglo *'Bidimensional[][]'*
 
 
 Mira Deployment para conocer como desplegar el proyecto desde Netbeans o Visual Studio Code.
