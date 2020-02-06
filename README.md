@@ -22,6 +22,33 @@ Declarando asi ,Un Arreglo de 3 dimensiones donde Cada una de estas dimensiones,
 
 ### NOTA : el largo de las filas no es predeterminado ,Puesto que es un arreglo dinamico con el que se manejan los Datos
 
+#### ESTABLECER DIMENSIONES AL ARREGLO
+```java
+ for (int dimension = 0; dimension < cantidadTaquillas; dimension++) {
+            // ITERADOR QUE PERMITE LA CREACION DE N CANTIDAD ESTIPULADA DE DIMENSIONES O TAQUILLAS
+
+            this.listaTaquillas.add(new ArrayList<List<Integer>>());
+            // POR CADA ITERACION AGREGA UN ARREGLO BIDIMENSIONAL A LA LISTA DE AREGLOS
+            // CADA ARREGLO BIDIMENSIONAL CONTENDRA DATOS DE VENTAS Y DEVOLUCIONES 
+            // ACERCA DE UNA ESPECIFICA TAQUILLA,ES DECIR LA DIMENSION EN LA QUE SE ENCUENTRA DICHO ARREGLO
+```
+       
+Cada Dimension que vamos agregando en el primer for dentro del constructor en la clase **'Cine'** representa una taquilla ,si observamos el for ,las 'dimensiones' deben ser **menor a** 'cantidadTaquillas' Parametro que se recibe al instanciar una nueva clase del cine '(MONITORA DE HILOS) '  
+
+#### ESTABLECER COLUMNAS DE TABLA  AL ARREGLO BIDIMENSIONAL ALMACENADO EN CADA DIMENSION
+```java
+ for (int columna = 0; columna < 4; columna++) {
+                // ITERADOR QUE PERMITE AGREGAR 4 COLUMNAS A CADA ARREGLO BIDIMENSIONAL
+                // ES DECIR AGREGA UNA LISTA NUEVA POR CADA ITERACION EN CADA UNA DE LAS 4 DIMENSIONES
+
+                this.listaTaquillas.get(dimension).add(new ArrayList<Integer>());
+                //SE UTILIZA 'get'(indice) EQUIVALENTE A [indice] EN ARREGLOS COMUNES
+                //'add' SE UTILISA PARA AGREGAR ELEMENTOS AL INDICE INDICADO
+            }
+```
+Agregamos 4 columnas  o nuevos `ArrayList <Integer>` a cada una de las dimensiones ,este for se itera dentro del anterior para lograrlo 
+
+
 Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la siguiente: 
 
 | Num Cliente | Cant Boletos | Sala | AccionTaquilla|
