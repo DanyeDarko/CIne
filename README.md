@@ -26,19 +26,19 @@ Por lo tanto la Tabla de cada taquilla o  ``List<List<Integer>>``  seria la sigu
 
 | Num Cliente | Cant Boletos | Sala | AccionTaquilla|
 | ----- | ---- | ----- | ---- |
-| 1 | 5 | 2 | 1 |
-
+| 1 | 5 | 2 | 1 | 📌 **1 REPRESENTA UNA VENTA,POR LO TANTO SUMA VENTAS EN LA SALA QUE VENDIO Y POR SUPUESTO SUMA A LA TAQUILLA QUE VENDIO** 
+| 2 | 3 | 5 | 0 | 📌 **0 REPRESENTA UNA DEVOLUCION POR LO TANTO RESTA VENTAS EN LA SALA QUE DEVOLVIO,Y SUMA DEVOLUCIONES,POR SUPUESTO RESTA LA TAQUILLA DONDE SE DEVOLVIO** 
  Estas Variables seran definida por la variables que pasan al metodo **operacionTaquilla** de la clase **'DatosCineAbstracta'** el cual implementa con *Implements* los metodos de la interfaz **'InterfazCine'**  <-- ESTAS VARIABLE SE CONSTRUYE DESDE EL EL CONSTRUCTOR DEL HILO EL PARAMETRO SE DEFINNE EN **'mainServicioCine'** o clase principal.
  
  ### INTERFAZ CINE
  Construye de manera abstracta los metodos usados principalmente en un cine, son implementados en la **'DatosCineAbstracta'**
  
  - *ObtenerDatosTaquilla *: Recibe como parametro la taquilla que queremos imprimir en este caso (Dimension de el arreglo principal de donde obtendremos los datos) 
- ```
- java
+ ```java
      public void obtenerDatosTaquilla(int numeroTaquilla);
 ```
-- *operacionTaquilla* : Realisa una nueva compra(nueva insercion)de acuerdo a la Taquilla donde se desea comprar,Normalmente esta accion la realisa un cliente(Hilo Representa al cliente) que planea devolver(0) o comprar(1) **N** cantidad de boletos para **X** sala 
+- *operacionTaquilla* : Realisa una nueva compra(nueva insercion)de acuerdo a la Taquilla donde se desea comprar,Normalmente esta accion la realisa un cliente(Hilo Representa al cliente) que planea devolver(0) o comprar(1) **N** cantidad de boletos para **X** sala
+
  ```java
     public void operacionTaquilla(int numeroCliente, int numTaquilla, int cantidadBoletos, int numeroSala, int tipoOperacion);
 ```
